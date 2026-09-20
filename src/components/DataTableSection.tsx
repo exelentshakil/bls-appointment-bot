@@ -16,7 +16,6 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Terminal, Copy, Check, ExternalLink, ShieldCheck, ArrowRight } from 'lucide-react';
@@ -30,27 +29,27 @@ export function DataTableSection() {
     switch (status) {
       case 'verified':
         return (
-          <Badge variant="outline" className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 text-[11px] font-mono">
-            Verified
-          </Badge>
+          <span className="inline-flex items-center rounded-[4px] bg-emerald-50 dark:bg-emerald-950/40 text-[#057A55] dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-2 py-0.5 text-[11px] font-mono font-semibold">
+            Verified Open
+          </span>
         );
       case 'active':
         return (
-          <Badge variant="outline" className="bg-teal-50 dark:bg-teal-950/40 text-teal-800 dark:text-teal-300 border-teal-200 dark:border-teal-800 text-[11px] font-mono">
-            Active
-          </Badge>
+          <span className="inline-flex items-center rounded-[4px] bg-[#533AFD]/10 dark:bg-[#7A68FF]/20 text-[#533AFD] dark:text-[#7A68FF] border border-[#533AFD]/20 dark:border-[#7A68FF]/30 px-2 py-0.5 text-[11px] font-mono font-semibold">
+            Sub-Sec Probe
+          </span>
         );
       case 'queued':
         return (
-          <Badge variant="outline" className="bg-indigo-50 dark:bg-indigo-950/40 text-indigo-800 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 text-[11px] font-mono">
+          <span className="inline-flex items-center rounded-[4px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-2 py-0.5 text-[11px] font-mono font-semibold">
             Queued
-          </Badge>
+          </span>
         );
       case 'flagged':
         return (
-          <Badge variant="outline" className="bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border-amber-200 dark:border-amber-800 text-[11px] font-mono">
+          <span className="inline-flex items-center rounded-[4px] bg-[#FFE0EF] dark:bg-[#FFE0EF]/15 text-[#84194D] dark:text-[#FFC7E2] border border-[#FFC7E2] dark:border-[#FFC7E2]/30 px-2 py-0.5 text-[11px] font-mono font-semibold">
             Intercepted
-          </Badge>
+          </span>
         );
     }
   };
@@ -62,29 +61,29 @@ export function DataTableSection() {
   };
 
   return (
-    <Card className="w-full border-[var(--color-border)] bg-[var(--color-surface)] shadow-xs">
-      <CardHeader className="p-4 sm:p-6 border-b border-[var(--color-border)]">
+    <div className="w-full rounded-[6px] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-2xs">
+      <div className="p-4 sm:p-6 border-b border-[var(--color-border)]">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <Badge variant="outline" className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 text-[11px] font-mono">
+              <span className="rounded-[4px] bg-[#533AFD]/10 text-[#533AFD] dark:bg-[#7A68FF]/20 dark:text-[#7A68FF] border border-[#533AFD]/20 px-2 py-0.5 text-[11px] font-mono font-semibold">
                 {siteConfig.table.badge}
-              </Badge>
-              <CardTitle className="text-base sm:text-lg font-bold tracking-tight text-[var(--color-text-primary)]">
+              </span>
+              <h3 className="text-base sm:text-lg font-bold tracking-tight text-[var(--color-text-primary)]">
                 {siteConfig.table.title}
-              </CardTitle>
+              </h3>
             </div>
-            <CardDescription className="text-xs sm:text-sm text-[var(--color-text-secondary)]">
+            <p className="text-xs sm:text-sm text-[var(--color-text-secondary)]">
               {siteConfig.table.description}
-            </CardDescription>
+            </p>
           </div>
           <div className="text-xs font-mono text-[var(--color-text-muted)]">
             Click any row to inspect deep schema
           </div>
         </div>
-      </CardHeader>
+      </div>
 
-      <CardContent className="p-0">
+      <div className="p-0">
         <div className="overflow-x-auto">
           <Table>
             <TableHeader className="bg-[var(--color-panel-subtle)]">
@@ -123,7 +122,7 @@ export function DataTableSection() {
                   <TableCell className="py-3 px-4">
                     {getStatusBadge(row.status)}
                   </TableCell>
-                  <TableCell className="font-mono text-xs text-emerald-600 dark:text-emerald-400 font-medium py-3 px-4">
+                  <TableCell className="font-mono text-xs text-[#533AFD] dark:text-[#7A68FF] font-medium py-3 px-4">
                     {row.latency}
                   </TableCell>
                   <TableCell className="py-3 px-4">
@@ -134,7 +133,7 @@ export function DataTableSection() {
                         e.stopPropagation();
                         setSelectedRow(row);
                       }}
-                      className="h-7 text-xs font-mono text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 p-1 px-2"
+                      className="h-7 text-xs font-mono text-[#533AFD] dark:text-[#7A68FF] hover:text-[#432DE0] hover:bg-[#533AFD]/10 p-1 px-2.5 rounded-[4px]"
                     >
                       Inspect
                       <ArrowRight className="h-3 w-3 ml-1" />
@@ -145,7 +144,7 @@ export function DataTableSection() {
             </TableBody>
           </Table>
         </div>
-      </CardContent>
+      </div>
 
       {/* Slide-Out Inspection Sheet */}
       <Sheet open={!!selectedRow} onOpenChange={(open) => !open && setSelectedRow(null)}>
@@ -154,7 +153,7 @@ export function DataTableSection() {
             <div className="space-y-6">
               <SheetHeader className="text-left space-y-2 border-b border-[var(--color-border)] pb-4">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[var(--color-panel-subtle)] text-[var(--color-text-primary)] border border-[var(--color-border)]">
+                  <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-[4px] bg-[var(--color-panel-subtle)] text-[var(--color-text-primary)] border border-[var(--color-border)]">
                     {selectedRow.id}
                   </span>
                   {getStatusBadge(selectedRow.status)}
@@ -162,35 +161,45 @@ export function DataTableSection() {
                 <SheetTitle className="text-lg font-bold text-[var(--color-text-primary)]">
                   {selectedRow.entityName}
                 </SheetTitle>
-                <SheetDescription className="text-xs font-mono text-[var(--color-text-secondary)]">
-                  Engine: {selectedRow.provider} • Processed in {selectedRow.latency}
+                <SheetDescription className="text-xs text-[var(--color-text-secondary)]">
+                  Consular mission jurisdiction telemetry, polling interval, and automated slot reservation lock status.
                 </SheetDescription>
               </SheetHeader>
 
-              {/* Metadata Cards */}
-              <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-                <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-3">
-                  <div className="text-[10px] text-[var(--color-text-muted)] uppercase">Classification</div>
+              {/* Key Values Grid */}
+              <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="p-3 rounded-[4px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)]">
+                  <div className="text-[10px] text-[var(--color-text-muted)] font-mono uppercase">Visa Category</div>
                   <div className="font-semibold text-[var(--color-text-primary)] mt-0.5">{selectedRow.category}</div>
                 </div>
-                <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-3">
-                  <div className="text-[10px] text-[var(--color-text-muted)] uppercase">Updated</div>
-                  <div className="font-semibold text-[var(--color-text-primary)] mt-0.5">{selectedRow.updatedAt}</div>
+                <div className="p-3 rounded-[4px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)]">
+                  <div className="text-[10px] text-[var(--color-text-muted)] font-mono uppercase">Probe Latency</div>
+                  <div className="font-mono font-semibold text-[#533AFD] dark:text-[#7A68FF] mt-0.5">{selectedRow.latency}</div>
+                </div>
+                <div className="p-3 rounded-[4px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)]">
+                  <div className="text-[10px] text-[var(--color-text-muted)] font-mono uppercase">Last Polled</div>
+                  <div className="font-mono text-[var(--color-text-secondary)] mt-0.5">{selectedRow.updatedAt}</div>
+                </div>
+                <div className="p-3 rounded-[4px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)]">
+                  <div className="text-[10px] text-[var(--color-text-muted)] font-mono uppercase">Residential Proxy</div>
+                  <div className="font-mono text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">Active (0 Rate Limits)</div>
                 </div>
               </div>
 
-              {/* Raw JSON Payload */}
+              {/* Raw JSON Inspector */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-[var(--color-text-primary)]">
-                    <Terminal className="h-3.5 w-3.5 text-emerald-600" />
-                    <span>Raw JSON Record Payload</span>
+                  <div className="flex items-center gap-1.5">
+                    <Terminal className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF]" />
+                    <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-primary)] font-mono">
+                      Deep Diagnostic Payload
+                    </span>
                   </div>
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     size="sm"
                     onClick={() => handleCopy(selectedRow.payload)}
-                    className="h-7 text-xs font-mono"
+                    className="h-7 text-xs font-mono rounded-[4px]"
                   >
                     {copied ? (
                       <>
@@ -205,14 +214,14 @@ export function DataTableSection() {
                     )}
                   </Button>
                 </div>
-                <pre className="rounded-xl border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-4 text-xs font-mono text-[var(--color-text-primary)] overflow-x-auto max-h-96 leading-relaxed">
-                  {JSON.stringify(selectedRow.payload, null, 2)}
-                </pre>
+                <div className="rounded-[4px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-3.5 overflow-x-auto max-h-72 text-xs font-mono text-[var(--color-text-primary)]">
+                  <pre>{JSON.stringify(selectedRow.payload, null, 2)}</pre>
+                </div>
               </div>
             </div>
           )}
         </SheetContent>
       </Sheet>
-    </Card>
+    </div>
   );
 }

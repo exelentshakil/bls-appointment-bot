@@ -80,15 +80,15 @@ export function ChaosSimulatorModal({ open, onOpenChange }: ChaosSimulatorModalP
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-2xl bg-[var(--color-surface)] border border-[var(--color-border)] p-6 text-[var(--color-text-primary)]">
+      <DialogContent className="sm:max-w-2xl bg-[var(--color-surface)] border border-[var(--color-border)] p-6 text-[var(--color-text-primary)] rounded-[6px] shadow-lg">
         <DialogHeader className="border-b border-[var(--color-border)] pb-4">
           <div className="flex items-center gap-2 mb-1">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-800 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800">
+            <span className="inline-flex items-center gap-1.5 rounded-[4px] bg-amber-50 px-2.5 py-0.5 text-xs font-semibold text-amber-800 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800">
               <Zap className="h-3.5 w-3.5 text-amber-600" />
               Bot Anti-Detection Simulator
             </span>
           </div>
-          <DialogTitle className="text-lg font-bold">
+          <DialogTitle className="text-lg font-bold text-[var(--color-text-primary)]">
             Live Resilience & Anti-Bot Failover Testing
           </DialogTitle>
           <DialogDescription className="text-xs text-[var(--color-text-secondary)]">
@@ -102,7 +102,7 @@ export function ChaosSimulatorModal({ open, onOpenChange }: ChaosSimulatorModalP
             size="sm"
             onClick={() => runChaosTest('turnstile_challenge')}
             disabled={runningScenario !== null}
-            className="flex flex-col items-start p-3 h-auto text-left border-[var(--color-border)] hover:bg-[var(--color-panel-subtle)]"
+            className="flex flex-col items-start p-3 h-auto text-left border-[var(--color-border)] hover:bg-[var(--color-panel-subtle)] rounded-[4px]"
           >
             <ShieldAlert className="h-4 w-4 text-amber-500 mb-1.5" />
             <span className="font-bold text-xs text-[var(--color-text-primary)]">Cloudflare Challenge</span>
@@ -114,7 +114,7 @@ export function ChaosSimulatorModal({ open, onOpenChange }: ChaosSimulatorModalP
             size="sm"
             onClick={() => runChaosTest('proxy_ban')}
             disabled={runningScenario !== null}
-            className="flex flex-col items-start p-3 h-auto text-left border-[var(--color-border)] hover:bg-[var(--color-panel-subtle)]"
+            className="flex flex-col items-start p-3 h-auto text-left border-[var(--color-border)] hover:bg-[var(--color-panel-subtle)] rounded-[4px]"
           >
             <Globe className="h-4 w-4 text-rose-500 mb-1.5" />
             <span className="font-bold text-xs text-[var(--color-text-primary)]">IP 429 Rate Limit</span>
@@ -126,7 +126,7 @@ export function ChaosSimulatorModal({ open, onOpenChange }: ChaosSimulatorModalP
             size="sm"
             onClick={() => runChaosTest('session_reauth')}
             disabled={runningScenario !== null}
-            className="flex flex-col items-start p-3 h-auto text-left border-[var(--color-border)] hover:bg-[var(--color-panel-subtle)]"
+            className="flex flex-col items-start p-3 h-auto text-left border-[var(--color-border)] hover:bg-[var(--color-panel-subtle)] rounded-[4px]"
           >
             <Lock className="h-4 w-4 text-teal-500 mb-1.5" />
             <span className="font-bold text-xs text-[var(--color-text-primary)]">Session Expiry</span>
@@ -135,7 +135,7 @@ export function ChaosSimulatorModal({ open, onOpenChange }: ChaosSimulatorModalP
         </div>
 
         {/* Live Execution Console */}
-        <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-3 font-mono text-xs max-h-48 overflow-y-auto space-y-1">
+        <div className="rounded-[4px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-3 font-mono text-xs max-h-48 overflow-y-auto space-y-1">
           {chaosLog.length === 0 && (
             <div className="text-[var(--color-text-muted)] text-[11px] py-4 text-center">
               Select an obstacle scenario above to run automated bot failover simulation.

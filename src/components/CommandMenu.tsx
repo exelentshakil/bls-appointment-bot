@@ -62,11 +62,11 @@ export function CommandMenu({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-lg bg-[var(--color-surface)] border border-[var(--color-border)] p-4 text-[var(--color-text-primary)]">
+      <DialogContent className="max-w-lg bg-[var(--color-surface)] border border-[var(--color-border)] p-4 text-[var(--color-text-primary)] rounded-[6px] shadow-lg">
         <DialogHeader className="border-b border-[var(--color-border)] pb-2 mb-2">
           <div className="flex items-center justify-between">
             <DialogTitle className="text-sm font-bold flex items-center gap-2">
-              <Compass className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+              <Compass className="h-4 w-4 text-[#533AFD] dark:text-[#7A68FF]" />
               Command Palette (⌘K)
             </DialogTitle>
             <span className="text-xs text-[var(--color-text-muted)] font-mono">
@@ -92,10 +92,10 @@ export function CommandMenu({
                   <button
                     key={item.id}
                     onClick={() => handleNavigate(item.id)}
-                    className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-[var(--color-panel-subtle)] text-xs text-left transition-colors"
+                    className="w-full flex items-center justify-between p-2 rounded-[4px] hover:bg-[var(--color-panel-subtle)] text-xs text-left transition-colors"
                   >
                     <span className="flex items-center gap-2 font-medium">
-                      <Icon className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                      <Icon className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF]" />
                       {item.label}
                     </span>
                     <span className="text-[11px] text-[var(--color-text-muted)] font-mono">
@@ -122,10 +122,10 @@ export function CommandMenu({
                 <button
                   key={center.name}
                   onClick={() => handleNavigate('records')}
-                  className="flex items-center justify-between p-2 rounded-lg border border-[var(--color-border)]/60 bg-[var(--color-panel-subtle)] hover:bg-[var(--color-surface)] text-xs text-left transition-colors"
+                  className="flex items-center justify-between p-2 rounded-[4px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] hover:bg-[var(--color-surface)] text-xs text-left transition-colors"
                 >
                   <span className="flex items-center gap-1.5 truncate">
-                    <Building2 className="h-3 w-3 text-teal-600 dark:text-teal-400 shrink-0" />
+                    <Building2 className="h-3 w-3 text-[#533AFD] dark:text-[#7A68FF] shrink-0" />
                     <span className="truncate">{center.name}</span>
                   </span>
                   <span className={`text-[10px] font-mono shrink-0 ${center.active ? 'text-emerald-600 font-bold' : 'text-[var(--color-text-muted)]'}`}>
@@ -147,7 +147,7 @@ export function CommandMenu({
                   onOpenChange(false);
                   onOpenChaos();
                 }}
-                className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-amber-50/50 dark:hover:bg-amber-950/20 text-xs text-left text-amber-700 dark:text-amber-400 transition-colors"
+                className="w-full flex items-center gap-2 p-2 rounded-[4px] hover:bg-amber-50/50 dark:hover:bg-amber-950/20 text-xs text-left text-amber-700 dark:text-amber-400 transition-colors"
               >
                 <Zap className="h-3.5 w-3.5" />
                 <span>Launch Cloudflare & Rate-Limit Chaos Simulator</span>
@@ -158,7 +158,7 @@ export function CommandMenu({
                   onOpenChange(false);
                   onOpenGovernance();
                 }}
-                className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-emerald-50/50 dark:hover:bg-emerald-950/20 text-xs text-left text-emerald-700 dark:text-emerald-400 transition-colors"
+                className="w-full flex items-center gap-2 p-2 rounded-[4px] hover:bg-[#533AFD]/10 text-xs text-left text-[#533AFD] dark:text-[#7A68FF] transition-colors"
               >
                 <ShieldCheck className="h-3.5 w-3.5" />
                 <span>Inspect Stealth Browser & Anti-Bot Evasion Architecture</span>
@@ -169,7 +169,7 @@ export function CommandMenu({
                   onOpenChange(false);
                   onOpenLogs();
                 }}
-                className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900 text-xs text-left text-[var(--color-text-primary)] transition-colors"
+                className="w-full flex items-center gap-2 p-2 rounded-[4px] hover:bg-[var(--color-panel-subtle)] text-xs text-left text-[var(--color-text-primary)] transition-colors"
               >
                 <Terminal className="h-3.5 w-3.5" />
                 <span>Open Real-Time Headless Scraper Event Logs</span>

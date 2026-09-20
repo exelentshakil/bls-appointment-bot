@@ -2,7 +2,8 @@
 @variant dark (&:where(.dark, .dark *));
 
 /* ========================================================================= */
-/* STRIPE STANDARD ENTERPRISE TYPOGRAPHY SUITE: SÖHNE + SF PRO DISPLAY       */
+/* STRIPE OFFICIAL ENTERPRISE TYPOGRAPHY SUITE: SÖHNE + SF PRO DISPLAY       */
+/* Sourced directly from Stripe Brand Guidelines & Scraped System Assets     */
 /* ========================================================================= */
 
 /* Söhne Primary Brand Font */
@@ -101,6 +102,74 @@
   --font-mono: 'Sohne Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
+/* ========================================================================= */
+/* STRIPE AUTHENTIC DESIGN TOKENS (Sourced from branding.json)                */
+/* ========================================================================= */
+:root {
+  /* Stripe Canonical Palette */
+  --stripe-blurple: #533AFD;
+  --stripe-blurple-hover: #432DE0;
+  --stripe-blurple-subtle: rgba(83, 58, 253, 0.08);
+  --stripe-blurple-border: #B9B9F9;
+  --stripe-navy: #0D1738;
+  --stripe-slate: #425466;
+  --stripe-muted: #727F96;
+  --stripe-border: #E3E8EE;
+  --stripe-border-subtle: #F0F4F8;
+  --stripe-panel: #F6F9FC;
+  --stripe-canvas: #F8FAFC;
+  --stripe-surface: #FFFFFF;
+  --stripe-blush: #FFE0EF;
+  --stripe-green: #00D924;
+  --stripe-green-dark: #057A55;
+
+  /* App Theme Variables mapped to Stripe Tokens */
+  --color-canvas: var(--stripe-canvas);
+  --color-surface: var(--stripe-surface);
+  --color-panel-subtle: var(--stripe-panel);
+  --color-border: var(--stripe-border);
+  --color-border-subtle: var(--stripe-border-subtle);
+  --color-text-primary: var(--stripe-navy);
+  --color-text-secondary: var(--stripe-slate);
+  --color-text-muted: var(--stripe-muted);
+  --color-accent: var(--stripe-blurple);
+  --color-accent-hover: var(--stripe-blurple-hover);
+  --color-accent-subtle: var(--stripe-blurple-subtle);
+  --color-accent-border: var(--stripe-blurple-border);
+}
+
+.dark {
+  /* Stripe Dark Mode Tokens */
+  --stripe-blurple: #7A68FF;
+  --stripe-blurple-hover: #9283FF;
+  --stripe-blurple-subtle: rgba(122, 104, 255, 0.12);
+  --stripe-blurple-border: #4D40B8;
+  --stripe-navy: #F6F9FC;
+  --stripe-slate: #ADBDCC;
+  --stripe-muted: #68778D;
+  --stripe-border: #232B3E;
+  --stripe-border-subtle: #1B2232;
+  --stripe-panel: #141A28;
+  --stripe-canvas: #0A0D14;
+  --stripe-surface: #101522;
+  --stripe-blush: rgba(255, 224, 239, 0.15);
+  --stripe-green: #00D924;
+  --stripe-green-dark: #10B981;
+
+  --color-canvas: var(--stripe-canvas);
+  --color-surface: var(--stripe-surface);
+  --color-panel-subtle: var(--stripe-panel);
+  --color-border: var(--stripe-border);
+  --color-border-subtle: var(--stripe-border-subtle);
+  --color-text-primary: var(--stripe-navy);
+  --color-text-secondary: var(--stripe-slate);
+  --color-text-muted: var(--stripe-muted);
+  --color-accent: var(--stripe-blurple);
+  --color-accent-hover: var(--stripe-blurple-hover);
+  --color-accent-subtle: var(--stripe-blurple-subtle);
+  --color-accent-border: var(--stripe-blurple-border);
+}
+
 body {
   font-family: 'Sohne', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--color-text-primary);
@@ -110,9 +179,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .font-heading {
   font-family: 'Sohne', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  font-weight: 700;
 }
 
 code, kbd, samp, pre, .font-mono {
@@ -120,40 +191,44 @@ code, kbd, samp, pre, .font-mono {
   letter-spacing: -0.01em;
 }
 
-:root {
-  --color-canvas: #f8fafc;
-  --color-surface: #ffffff;
-  --color-panel-subtle: #f1f5f9;
-  --color-border: #e2e8f0;
-  --color-border-subtle: #f1f5f9;
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-muted: #94a3b8;
-  --color-accent: #0284c7;
+/* Stripe Micro-Elevations */
+.stripe-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: 0px 1px 3px rgba(3, 0, 19, 0.05);
+  border-radius: 6px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.dark {
-  --color-canvas: #0b0d11;
-  --color-surface: #14171f;
-  --color-panel-subtle: #1a1e28;
-  --color-border: #222735;
-  --color-border-subtle: #191d27;
-  --color-text-primary: #f8fafc;
-  --color-text-secondary: #94a3b8;
-  --color-text-muted: #64748b;
-  --color-accent: #38bdf8;
+.stripe-card:hover {
+  border-color: var(--stripe-blurple-border);
+  box-shadow: 0px 4px 12px rgba(3, 0, 19, 0.07);
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+/* Stripe Button Architecture (4px radius, blurple fill) */
+.stripe-btn-primary {
+  background-color: #533AFD;
+  color: #FFFFFF;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+.stripe-btn-primary:hover {
+  background-color: #432DE0;
 }
 
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.stripe-btn-secondary {
+  background-color: #FFFFFF;
+  color: #533AFD;
+  border: 1px solid #B9B9F9;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.stripe-btn-secondary:hover {
+  background-color: #F6F9FC;
+  border-color: #533AFD;
 }

@@ -4,27 +4,30 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[4px] text-xs font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#533AFD]/40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-slate-900 text-white shadow hover:bg-slate-800 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-200",
+          "bg-[#533AFD] text-white shadow-2xs hover:bg-[#432DE0] active:scale-[0.99] dark:bg-[#7A68FF] dark:hover:bg-[#9283FF]",
         destructive:
-          "bg-red-600 text-white shadow-sm hover:bg-red-700 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-800",
+          "bg-red-600 text-white shadow-2xs hover:bg-red-700 dark:bg-red-900 dark:text-slate-50 dark:hover:bg-red-800",
         outline:
-          "border border-slate-300 bg-white text-slate-800 shadow-xs hover:bg-slate-50 hover:text-slate-950 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700",
+          "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-primary)] shadow-2xs hover:bg-[var(--color-panel-subtle)] hover:text-[var(--color-text-primary)] hover:border-[var(--stripe-blurple-border)]",
         secondary:
-          "bg-slate-100 text-slate-900 shadow-sm hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700",
-        ghost: "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
-        link: "text-indigo-600 underline-offset-4 hover:underline dark:text-indigo-400",
-        brand: "bg-indigo-600 text-white shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600",
+          "bg-[var(--color-surface)] text-[#533AFD] border border-[#B9B9F9] shadow-2xs hover:bg-[var(--color-panel-subtle)] hover:border-[#533AFD] dark:text-[#7A68FF] dark:border-[#4D40B8] dark:hover:bg-[#141A28]",
+        ghost:
+          "hover:bg-[var(--color-panel-subtle)] hover:text-[var(--color-text-primary)] text-[var(--color-text-secondary)]",
+        link:
+          "text-[#533AFD] underline-offset-4 hover:underline dark:text-[#7A68FF]",
+        brand:
+          "bg-[#533AFD] text-white shadow-2xs hover:bg-[#432DE0] dark:bg-[#7A68FF] dark:hover:bg-[#9283FF]",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8 text-base",
-        icon: "h-9 w-9",
+        default: "h-8.5 px-3.5 py-1.5",
+        sm: "h-7.5 rounded-[4px] px-2.5 text-xs",
+        lg: "h-10 rounded-[4px] px-6 text-sm",
+        icon: "h-8 w-8 rounded-[4px]",
       },
     },
     defaultVariants: {

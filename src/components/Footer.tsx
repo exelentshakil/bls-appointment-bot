@@ -30,17 +30,17 @@ export function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-primary)] font-mono">
               Automation Platform
             </h4>
-            <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-4 flex flex-col justify-between flex-1 space-y-3.5 text-xs">
+            <div className="rounded-[6px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-4 flex flex-col justify-between flex-1 space-y-3.5 text-xs">
               <div className="space-y-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white font-black text-sm shadow-xs shrink-0">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-[6px] bg-gradient-to-br from-[#533AFD] via-[#432DE0] to-[#0D1738] text-white font-black text-sm shadow-xs shrink-0">
                     <Bot className="h-4 w-4" />
                   </div>
                   <div className="flex items-center gap-2 min-w-0 flex-wrap">
                     <span className="text-base font-extrabold tracking-tight text-[var(--color-text-primary)] whitespace-nowrap">
                       {siteConfig.name}
                     </span>
-                    <span className="rounded-full bg-emerald-100 dark:bg-emerald-950 px-2 py-0.5 text-[10px] font-mono font-bold text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800 whitespace-nowrap shrink-0">
+                    <span className="rounded-[4px] bg-[#533AFD]/10 dark:bg-[#7A68FF]/20 px-2 py-0.5 text-[10px] font-mono font-bold text-[#533AFD] dark:text-[#7A68FF] border border-[#533AFD]/20 dark:border-[#7A68FF]/30 whitespace-nowrap shrink-0">
                       {siteConfig.badge}
                     </span>
                   </div>
@@ -56,7 +56,7 @@ export function Footer() {
                   <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
                   <span className="text-[11px] font-semibold truncate">Sub-Second Slot Polling Ready</span>
                 </div>
-                <span className="inline-flex items-center rounded-md bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[10px] font-mono font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 whitespace-nowrap shrink-0">
+                <span className="inline-flex items-center rounded-[4px] bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[10px] font-mono font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 whitespace-nowrap shrink-0">
                   100% Codebase Ownership
                 </span>
               </div>
@@ -68,23 +68,23 @@ export function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-primary)] font-mono">
               Systems Architecture
             </h4>
-            <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-4 flex flex-col justify-between flex-1 space-y-3.5 text-xs">
+            <div className="rounded-[6px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-4 flex flex-col justify-between flex-1 space-y-3.5 text-xs">
               <div className="space-y-2">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-2 text-[11px] font-mono text-[var(--color-text-secondary)]">
-                  <div className="flex items-center gap-1.5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
-                    <Terminal className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                  <div className="flex items-center gap-1.5 rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
+                    <Terminal className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF] shrink-0" />
                     <span className="truncate">Python 3.12 / Playwright</span>
                   </div>
-                  <div className="flex items-center gap-1.5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
-                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                  <div className="flex items-center gap-1.5 rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
+                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                     <span className="truncate">Turnstile & TLS Evasion</span>
                   </div>
-                  <div className="flex items-center gap-1.5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
-                    <Globe className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                  <div className="flex items-center gap-1.5 rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
+                    <Globe className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF] shrink-0" />
                     <span className="truncate">Residential Proxy Mesh</span>
                   </div>
-                  <div className="flex items-center gap-1.5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
-                    <Code2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                  <div className="flex items-center gap-1.5 rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
+                    <Code2 className="h-3.5 w-3.5 text-[#533AFD] dark:text-[#7A68FF] shrink-0" />
                     <span className="truncate">PyInstaller Standalone Exe</span>
                   </div>
                 </div>
@@ -105,14 +105,14 @@ export function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-primary)] font-mono">
               Principal Architect
             </h4>
-            <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-4 flex flex-col justify-between flex-1 space-y-3 text-xs">
+            <div className="rounded-[6px] border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-4 flex flex-col justify-between flex-1 space-y-3 text-xs">
               <div className="space-y-2.5">
                 <div className="flex items-center gap-3">
                   <div className="relative">
                     <img
                       src="/headshot.jpeg"
                       alt="Shakil Ahmed"
-                      className="h-10 w-10 rounded-full object-cover border-2 border-emerald-500 shadow-xs"
+                      className="h-10 w-10 rounded-full object-cover border-2 border-[#533AFD] shadow-xs"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';
                       }}
@@ -123,7 +123,7 @@ export function Footer() {
                     <div className="font-bold text-sm text-[var(--color-text-primary)]">
                       Shakil Ahmed
                     </div>
-                    <div className="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium">
+                    <div className="text-[11px] text-[#533AFD] dark:text-[#7A68FF] font-semibold">
                       Founder, BarakahSoft LLC
                     </div>
                   </div>
@@ -135,7 +135,7 @@ export function Footer() {
               </div>
 
               <div className="pt-2 border-t border-[var(--color-border)] flex items-center justify-between text-[11px] font-mono">
-                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                <span className="text-[#533AFD] dark:text-[#7A68FF] font-semibold">
                   Verified Upwork Partner
                 </span>
                 <span className="text-[var(--color-text-muted)]">

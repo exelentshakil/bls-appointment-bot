@@ -22,7 +22,7 @@ import {
   YAxis,
   Tooltip,
 } from 'recharts';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { siteConfig } from '@/config/site';
 
@@ -84,11 +84,11 @@ export function MetricsGrid() {
 
   return (
     <div className="w-full space-y-4">
-      {/* 3 High-Density KPI Cards WITH DEDICATED SHADCN / RECHARTS CHARTS */}
+      {/* 3 High-Density KPI Cards WITH AUTHENTIC STRIPE VISUAL POLISH & RECHARTS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
         {/* Card 1: Slot Detection Latency */}
-        <Card className="border-[var(--color-border)] bg-[var(--color-surface)] shadow-xs flex flex-col justify-between overflow-hidden">
-          <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
+        <div className="rounded-[6px] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between overflow-hidden">
+          <div className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
             <div className="space-y-0.5">
               <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)] font-mono">
                 Slot Detection Latency
@@ -97,41 +97,38 @@ export function MetricsGrid() {
                 Sub-Second Polling Engine
               </div>
             </div>
-            <Badge
-              variant="outline"
-              className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 text-[10px] font-mono shrink-0"
-            >
-              <Radio className="h-3 w-3 mr-1 text-emerald-600 dark:text-emerald-400 animate-pulse" />
+            <span className="inline-flex items-center rounded-[4px] bg-[#533AFD]/10 dark:bg-[#7A68FF]/20 text-[#533AFD] dark:text-[#7A68FF] border border-[#533AFD]/20 dark:border-[#7A68FF]/30 px-2 py-0.5 text-[10px] font-mono font-semibold shrink-0">
+              <Radio className="h-3 w-3 mr-1 text-[#533AFD] dark:text-[#7A68FF] animate-pulse" />
               Real-Time SSE
-            </Badge>
-          </CardHeader>
-          <CardContent className="p-4 pt-1 space-y-3">
+            </span>
+          </div>
+          <div className="p-4 pt-1 space-y-3">
             <div className="flex items-baseline justify-between gap-2">
               <span className="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-[var(--color-text-primary)]">
                 640ms
               </span>
-              <span className="inline-flex items-center text-xs font-semibold text-emerald-600 dark:text-emerald-400 font-mono">
+              <span className="inline-flex items-center text-xs font-semibold text-[#533AFD] dark:text-[#7A68FF] font-mono">
                 <ArrowUpRight className="h-3 w-3 mr-0.5" />
                 Sub-Second
               </span>
             </div>
 
-            {/* Embedded Micro AreaChart Sparkline */}
+            {/* Embedded Micro AreaChart Sparkline in Stripe Blurple */}
             <div className="h-12 w-full pt-1">
               {mounted && (
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={latencySparkline} margin={{ top: 2, right: 2, left: 2, bottom: 0 }}>
                     <defs>
-                      <linearGradient id="card1Grad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#10b981" stopOpacity={0.35} />
-                        <stop offset="100%" stopColor="#10b981" stopOpacity={0.0} />
+                      <linearGradient id="stripeBlurpleGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#533AFD" stopOpacity={0.35} />
+                        <stop offset="100%" stopColor="#533AFD" stopOpacity={0.0} />
                       </linearGradient>
                     </defs>
                     <Tooltip
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
                           return (
-                            <div className="rounded bg-[var(--color-surface)] border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-mono shadow-xs">
+                            <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2 py-0.5 text-[10px] font-mono shadow-xs text-[var(--color-text-primary)]">
                               {payload[0].value}ms
                             </div>
                           );
@@ -142,25 +139,25 @@ export function MetricsGrid() {
                     <Area
                       type="monotone"
                       dataKey="value"
-                      stroke="#10b981"
-                      strokeWidth={1.5}
-                      fill="url(#card1Grad)"
+                      stroke="#533AFD"
+                      strokeWidth={1.75}
+                      fill="url(#stripeBlurpleGrad)"
                     />
                   </AreaChart>
                 </ResponsiveContainer>
               )}
             </div>
 
-            <p className="text-[11px] text-[var(--color-text-muted)] font-mono border-t border-[var(--color-border)]/60 pt-2 flex items-center justify-between">
+            <p className="text-[11px] text-[var(--color-text-muted)] font-mono border-t border-[var(--color-border)]/70 pt-2 flex items-center justify-between">
               <span>P99 Polling Interval: 1.2s</span>
-              <span className="text-emerald-600 font-medium">0 Drop</span>
+              <span className="text-[#533AFD] dark:text-[#7A68FF] font-medium">0 Drop</span>
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Card 2: Stealth Bypass Rate */}
-        <Card className="border-[var(--color-border)] bg-[var(--color-surface)] shadow-xs flex flex-col justify-between overflow-hidden">
-          <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
+        <div className="rounded-[6px] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between overflow-hidden">
+          <div className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
             <div className="space-y-0.5">
               <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)] font-mono">
                 Stealth Bypass Rate
@@ -169,15 +166,12 @@ export function MetricsGrid() {
                 TLS JA3/JA4 Fingerprint Evasion
               </div>
             </div>
-            <Badge
-              variant="outline"
-              className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 text-[10px] font-mono shrink-0"
-            >
+            <span className="inline-flex items-center rounded-[4px] bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-2 py-0.5 text-[10px] font-mono font-semibold shrink-0">
               <ShieldCheck className="h-3 w-3 mr-1 text-emerald-600 dark:text-emerald-400" />
               Playwright Stealth
-            </Badge>
-          </CardHeader>
-          <CardContent className="p-4 pt-1 space-y-3">
+            </span>
+          </div>
+          <div className="p-4 pt-1 space-y-3">
             <div className="flex items-baseline justify-between gap-2">
               <span className="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-[var(--color-text-primary)]">
                 99.8% Clean
@@ -188,7 +182,7 @@ export function MetricsGrid() {
               </span>
             </div>
 
-            {/* Embedded Micro BarChart Histogram */}
+            {/* Embedded Micro BarChart Histogram in Stripe Emerald */}
             <div className="h-12 w-full pt-1">
               {mounted && (
                 <ResponsiveContainer width="100%" height="100%">
@@ -197,7 +191,7 @@ export function MetricsGrid() {
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
                           return (
-                            <div className="rounded bg-[var(--color-surface)] border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-mono shadow-xs">
+                            <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2 py-0.5 text-[10px] font-mono shadow-xs text-[var(--color-text-primary)]">
                               {payload[0].value}% clean
                             </div>
                           );
@@ -205,22 +199,22 @@ export function MetricsGrid() {
                         return null;
                       }}
                     />
-                    <Bar dataKey="clean" fill="#10b981" radius={[2, 2, 0, 0]} />
+                    <Bar dataKey="clean" fill="#057A55" radius={[2, 2, 0, 0]} />
                   </BarChart>
                 </ResponsiveContainer>
               )}
             </div>
 
-            <p className="text-[11px] text-[var(--color-text-muted)] font-mono border-t border-[var(--color-border)]/60 pt-2 flex items-center justify-between">
+            <p className="text-[11px] text-[var(--color-text-muted)] font-mono border-t border-[var(--color-border)]/70 pt-2 flex items-center justify-between">
               <span>Zero Cloudflare Bans</span>
-              <span className="text-emerald-600 font-medium">Turnstile Solved</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-medium">Turnstile Solved</span>
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Card 3: Booking Flow Execution */}
-        <Card className="border-[var(--color-border)] bg-[var(--color-surface)] shadow-xs flex flex-col justify-between overflow-hidden">
-          <CardHeader className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
+        <div className="rounded-[6px] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-2xs hover:shadow-xs transition-shadow flex flex-col justify-between overflow-hidden">
+          <div className="p-4 pb-2 flex flex-row items-center justify-between space-y-0">
             <div className="space-y-0.5">
               <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)] font-mono">
                 Booking Flow Execution
@@ -229,15 +223,12 @@ export function MetricsGrid() {
                 Automated Checkout Daemon
               </div>
             </div>
-            <Badge
-              variant="outline"
-              className="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800 text-[10px] font-mono shrink-0"
-            >
-              <Zap className="h-3 w-3 mr-1 text-emerald-600 dark:text-emerald-400" />
+            <span className="inline-flex items-center rounded-[4px] bg-teal-50 dark:bg-teal-950/40 text-teal-800 dark:text-teal-300 border border-teal-200 dark:border-teal-800 px-2 py-0.5 text-[10px] font-mono font-semibold shrink-0">
+              <Zap className="h-3 w-3 mr-1 text-teal-600 dark:text-teal-400" />
               Headless Daemon
-            </Badge>
-          </CardHeader>
-          <CardContent className="p-4 pt-1 space-y-3">
+            </span>
+          </div>
+          <div className="p-4 pt-1 space-y-3">
             <div className="flex items-baseline justify-between gap-2">
               <span className="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-[var(--color-text-primary)]">
                 1.8s Avg
@@ -248,13 +239,13 @@ export function MetricsGrid() {
               </span>
             </div>
 
-            {/* Embedded Micro AreaChart Sparkline */}
+            {/* Embedded Micro AreaChart Sparkline in Teal */}
             <div className="h-12 w-full pt-1">
               {mounted && (
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={executionSparkline} margin={{ top: 2, right: 2, left: 2, bottom: 0 }}>
                     <defs>
-                      <linearGradient id="card3Grad" x1="0" y1="0" x2="0" y2="1">
+                      <linearGradient id="stripeTealGrad" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="0%" stopColor="#0d9488" stopOpacity={0.35} />
                         <stop offset="100%" stopColor="#0d9488" stopOpacity={0.0} />
                       </linearGradient>
@@ -263,7 +254,7 @@ export function MetricsGrid() {
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
                           return (
-                            <div className="rounded bg-[var(--color-surface)] border border-[var(--color-border)] px-1.5 py-0.5 text-[10px] font-mono shadow-xs">
+                            <div className="rounded-[4px] bg-[var(--color-surface)] border border-[var(--color-border)] px-2 py-0.5 text-[10px] font-mono shadow-xs text-[var(--color-text-primary)]">
                               {payload[0].value}s flow
                             </div>
                           );
@@ -275,33 +266,33 @@ export function MetricsGrid() {
                       type="monotone"
                       dataKey="time"
                       stroke="#0d9488"
-                      strokeWidth={1.5}
-                      fill="url(#card3Grad)"
+                      strokeWidth={1.75}
+                      fill="url(#stripeTealGrad)"
                     />
                   </AreaChart>
                 </ResponsiveContainer>
               )}
             </div>
 
-            <p className="text-[11px] text-[var(--color-text-muted)] font-mono border-t border-[var(--color-border)]/60 pt-2 flex items-center justify-between">
+            <p className="text-[11px] text-[var(--color-text-muted)] font-mono border-t border-[var(--color-border)]/70 pt-2 flex items-center justify-between">
               <span>Auto Form-Fill & OTP Hook</span>
-              <span className="text-teal-600 font-medium">15m Slot Hold</span>
+              <span className="text-teal-600 dark:text-teal-400 font-medium">15m Slot Hold</span>
             </p>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
 
       {/* Main Full-Width Telemetry & Latency Chart */}
-      <Card className="border-[var(--color-border)] bg-[var(--color-surface)] shadow-xs p-4 sm:p-5">
+      <div className="rounded-[6px] border border-[var(--color-border)] bg-[var(--color-surface)] shadow-2xs p-4 sm:p-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)]">
                 Consular Slot Probing Telemetry & Latency Distribution
               </span>
-              <Badge className="bg-emerald-600 text-white text-[10px] font-mono">
+              <span className="rounded-[4px] bg-[#533AFD] text-white px-2 py-0.5 text-[10px] font-mono font-semibold">
                 Live SSE Stream
-              </Badge>
+              </span>
             </div>
             <p className="text-xs text-[var(--color-text-secondary)] mt-0.5">
               Continuous sub-second polling across US mission jurisdictions with automated residential IP rotation
@@ -309,11 +300,11 @@ export function MetricsGrid() {
           </div>
           <div className="flex items-center gap-3 text-xs font-mono text-[var(--color-text-secondary)]">
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
+              <span className="h-2 w-2 rounded-full bg-[#533AFD]"></span>
               Probes / hr
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-teal-500"></span>
+              <span className="h-2 w-2 rounded-full bg-[#057A55]"></span>
               Avg Probe Latency (640ms)
             </span>
           </div>
@@ -325,8 +316,8 @@ export function MetricsGrid() {
               <AreaChart data={mainTelemetryStream} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorProbes" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#533AFD" stopOpacity={0.22} />
+                    <stop offset="95%" stopColor="#533AFD" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
                 <XAxis
@@ -347,13 +338,13 @@ export function MetricsGrid() {
                   content={({ active, payload }) => {
                     if (active && payload && payload.length) {
                       return (
-                        <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 shadow-md text-xs font-mono space-y-1">
+                        <div className="rounded-[4px] border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 shadow-md text-xs font-mono space-y-1">
                           <p className="font-bold text-[var(--color-text-primary)]">{payload[0].payload.time}</p>
-                          <p className="text-emerald-600 dark:text-emerald-400 flex items-center justify-between gap-3">
+                          <p className="text-[#533AFD] dark:text-[#7A68FF] flex items-center justify-between gap-3">
                             <span>Probe Volume:</span>
                             <span className="font-bold">{payload[0].value?.toLocaleString()} checks</span>
                           </p>
-                          <p className="text-teal-600 dark:text-teal-400 flex items-center justify-between gap-3">
+                          <p className="text-[#057A55] dark:text-emerald-400 flex items-center justify-between gap-3">
                             <span>Latency:</span>
                             <span className="font-bold">{payload[0].payload.latency}ms</span>
                           </p>
@@ -366,7 +357,7 @@ export function MetricsGrid() {
                 <Area
                   type="monotone"
                   dataKey="probes"
-                  stroke="#10b981"
+                  stroke="#533AFD"
                   strokeWidth={2}
                   fillOpacity={1}
                   fill="url(#colorProbes)"
@@ -375,7 +366,7 @@ export function MetricsGrid() {
             </ResponsiveContainer>
           )}
         </div>
-      </Card>
+      </div>
     </div>
   );
 }
