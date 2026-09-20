@@ -15,15 +15,15 @@ import { Badge } from '@/components/ui/badge';
 import { siteConfig } from '@/config/site';
 
 const telemetryStream = [
-  { time: '09:00', ops: 3820, latency: 14.1 },
-  { time: '10:00', ops: 4210, latency: 13.8 },
-  { time: '11:00', ops: 5120, latency: 14.6 },
-  { time: '12:00', ops: 5040, latency: 14.2 },
-  { time: '13:00', ops: 5690, latency: 13.9 },
-  { time: '14:00', ops: 6240, latency: 13.5 },
-  { time: '15:00', ops: 5910, latency: 13.8 },
-  { time: '16:00', ops: 6450, latency: 13.2 },
-  { time: '17:00', ops: 6180, latency: 13.6 },
+  { time: '09:00', probes: 1420, latency: 610 },
+  { time: '10:00', probes: 1810, latency: 630 },
+  { time: '11:00', probes: 2120, latency: 650 },
+  { time: '12:00', probes: 2040, latency: 640 },
+  { time: '13:00', probes: 2390, latency: 620 },
+  { time: '14:00', probes: 2640, latency: 610 },
+  { time: '15:00', probes: 2410, latency: 635 },
+  { time: '16:00', probes: 2750, latency: 625 },
+  { time: '17:00', probes: 2580, latency: 640 },
 ];
 
 export function MetricsGrid() {
@@ -83,24 +83,24 @@ export function MetricsGrid() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)]">
-                Telemetry & Throughput Engine
+                BLS Slot Polling & Latency Telemetry
               </span>
               <Badge className="bg-emerald-600 text-white text-[10px] font-mono">
                 Live Stream
               </Badge>
             </div>
             <p className="text-xs text-[var(--color-text-secondary)] mt-0.5">
-              Sub-50ms pipeline processing with automated zero-drop backpressure
+              Continuous headless slot probing across US consular jurisdictions with TLS stealth evasion
             </p>
           </div>
           <div className="flex items-center gap-3 text-xs font-mono text-[var(--color-text-secondary)]">
             <span className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-emerald-500"></span>
-              Ops / hr
+              Probes / hr
             </span>
             <span className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-teal-500"></span>
-              P99 Latency (13.5ms)
+              Avg Probe Latency (640ms)
             </span>
           </div>
         </div>
@@ -110,7 +110,7 @@ export function MetricsGrid() {
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={telemetryStream} margin={{ top: 5, right: 10, left: -20, bottom: 0 }}>
                 <defs>
-                  <linearGradient id="colorOps" x1="0" y1="0" x2="0" y2="1">
+                  <linearGradient id="colorProbes" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#10b981" stopOpacity={0.25} />
                     <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
                   </linearGradient>
@@ -136,10 +136,10 @@ export function MetricsGrid() {
                         <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2 shadow-md text-xs font-mono">
                           <p className="font-bold text-[var(--color-text-primary)]">{payload[0].payload.time}</p>
                           <p className="text-emerald-600 dark:text-emerald-400">
-                            Volume: {payload[0].value?.toLocaleString()} ops
+                            Probes: {payload[0].value?.toLocaleString()} checks
                           </p>
                           <p className="text-teal-600 dark:text-teal-400">
-                            P99: {payload[0].payload.latency}ms
+                            Latency: {payload[0].payload.latency}ms
                           </p>
                         </div>
                       );
@@ -149,11 +149,11 @@ export function MetricsGrid() {
                 />
                 <Area
                   type="monotone"
-                  dataKey="ops"
+                  dataKey="probes"
                   stroke="#10b981"
                   strokeWidth={2}
                   fillOpacity={1}
-                  fill="url(#colorOps)"
+                  fill="url(#colorProbes)"
                 />
               </AreaChart>
             </ResponsiveContainer>

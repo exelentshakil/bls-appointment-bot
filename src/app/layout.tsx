@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { siteConfig } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: 'Enterprise Cockpit Demo • High-Density AI Operations Platform',
-  description: 'Production-grade enterprise full-stack cockpit with sub-second real-time telemetry, dual-provider AI governance, and zero double-booking architecture.',
+  title: `${siteConfig.name} • ${siteConfig.tagline}`,
+  description: siteConfig.description,
 };
 
 export default function RootLayout({

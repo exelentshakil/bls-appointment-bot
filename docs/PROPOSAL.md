@@ -1,4 +1,4 @@
-live: https://bls-appointment-bot.vercel.app
+live: https://bls-appointment-bot-delta.vercel.app
 code: https://github.com/exelentshakil/bls-appointment-bot
 work: https://shakilhq.com
 
