@@ -9,20 +9,15 @@ import {
 } from '@/components/ui/dialog';
 import {
   Compass,
-  FileText,
-  Workflow,
-  Sliders,
-  Radio,
-  Sparkles,
-  MessageSquare,
-  Database,
-  Calculator,
-  FileJson,
+  Activity,
+  Bot,
+  Globe2,
   Zap,
   ShieldCheck,
   Terminal,
-  Sun,
-  Moon,
+  Building2,
+  Radio,
+  CheckCircle2,
 } from 'lucide-react';
 
 interface CommandMenuProps {
@@ -84,19 +79,13 @@ export function CommandMenu({
           {/* Section Navigation */}
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] font-mono mb-2">
-              Jump to Architecture Section
+              Jump to Architecture Cockpit
             </h4>
             <div className="space-y-1">
               {[
-                { id: 'briefing', label: 'Executive Briefing & Evaluation Paths', icon: FileText },
-                { id: 'pipeline', label: '6-Node Animated Event Pipeline', icon: Workflow },
-                { id: 'config', label: 'Centralized No-Code Keyword Base', icon: Sliders },
-                { id: 'feeds', label: 'Multi-Community Feed Monitor', icon: Radio },
-                { id: 'ai-auditor', label: 'AI Opportunity Auditor & Dual-Model Engine', icon: Sparkles },
-                { id: 'slack', label: 'Slack Alert Cockpit & Human Review', icon: MessageSquare },
-                { id: 'datastore', label: 'Airtable & Sheets Deduplication Store', icon: Database },
-                { id: 'roi', label: 'Operational Costs & Marketplace ROI', icon: Calculator },
-                { id: 'blueprints', label: 'Make.com & n8n Blueprint Exporters', icon: FileJson },
+                { id: 'cockpit', label: 'Slot Telemetry & Latency Metrics', icon: Activity, tag: 'SSE Stream' },
+                { id: 'pipeline', label: 'Headless Flow Runner & Consular Probe', icon: Bot, tag: '3-Stage Engine' },
+                { id: 'records', label: 'Active Consular Center Monitors & Slot State', icon: Globe2, tag: '5 Jurisdictions' },
               ].map((item) => {
                 const Icon = item.icon;
                 return (
@@ -106,11 +95,11 @@ export function CommandMenu({
                     className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-[var(--color-panel-subtle)] text-xs text-left transition-colors"
                   >
                     <span className="flex items-center gap-2 font-medium">
-                      <Icon className="h-3.5 w-3.5 text-[var(--color-text-muted)]" />
+                      <Icon className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
                       {item.label}
                     </span>
-                    <span className="text-xs text-[var(--color-text-muted)] font-mono">
-                      #{item.id}
+                    <span className="text-[11px] text-[var(--color-text-muted)] font-mono">
+                      {item.tag}
                     </span>
                   </button>
                 );
@@ -118,10 +107,39 @@ export function CommandMenu({
             </div>
           </div>
 
-          {/* Direct Simulator Actions */}
+          {/* Quick Consular Mission Jumps */}
           <div className="border-t border-[var(--color-border)] pt-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] font-mono mb-2">
-              System Operations & Audits
+              Consular Jurisdiction Quick-Select
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+              {[
+                { name: 'Los Angeles (USA-LAX)', status: '2 Open Slots', active: true },
+                { name: 'Miami (USA-MIA)', status: 'Sub-second probe', active: false },
+                { name: 'New York (USA-NYC)', status: 'Sub-second probe', active: false },
+                { name: 'San Francisco (USA-SFO)', status: 'Sub-second probe', active: false },
+              ].map((center) => (
+                <button
+                  key={center.name}
+                  onClick={() => handleNavigate('records')}
+                  className="flex items-center justify-between p-2 rounded-lg border border-[var(--color-border)]/60 bg-[var(--color-panel-subtle)] hover:bg-[var(--color-surface)] text-xs text-left transition-colors"
+                >
+                  <span className="flex items-center gap-1.5 truncate">
+                    <Building2 className="h-3 w-3 text-teal-600 dark:text-teal-400 shrink-0" />
+                    <span className="truncate">{center.name}</span>
+                  </span>
+                  <span className={`text-[10px] font-mono shrink-0 ${center.active ? 'text-emerald-600 font-bold' : 'text-[var(--color-text-muted)]'}`}>
+                    {center.status}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Direct Simulator & Audit Actions */}
+          <div className="border-t border-[var(--color-border)] pt-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] font-mono mb-2">
+              Bot Diagnostics & Resilience Audits
             </h4>
             <div className="space-y-1">
               <button
@@ -132,7 +150,7 @@ export function CommandMenu({
                 className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-amber-50/50 dark:hover:bg-amber-950/20 text-xs text-left text-amber-700 dark:text-amber-400 transition-colors"
               >
                 <Zap className="h-3.5 w-3.5" />
-                <span>Launch Chaos & Resilience Simulator</span>
+                <span>Launch Cloudflare & Rate-Limit Chaos Simulator</span>
               </button>
 
               <button
@@ -143,7 +161,7 @@ export function CommandMenu({
                 className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-emerald-50/50 dark:hover:bg-emerald-950/20 text-xs text-left text-emerald-700 dark:text-emerald-400 transition-colors"
               >
                 <ShieldCheck className="h-3.5 w-3.5" />
-                <span>View NIST AI RMF & OWASP Top 10 Governance</span>
+                <span>Inspect Stealth Browser & Anti-Bot Evasion Architecture</span>
               </button>
 
               <button
@@ -154,7 +172,7 @@ export function CommandMenu({
                 className="w-full flex items-center gap-2 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-900 text-xs text-left text-[var(--color-text-primary)] transition-colors"
               >
                 <Terminal className="h-3.5 w-3.5" />
-                <span>Open Live Pipeline Event Log Stream</span>
+                <span>Open Real-Time Headless Scraper Event Logs</span>
               </button>
             </div>
           </div>

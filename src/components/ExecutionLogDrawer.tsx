@@ -12,21 +12,19 @@ import {
   Terminal,
   Activity,
   Trash2,
-  Download,
-  Filter,
-  CheckCircle2,
-  Clock,
-  Cpu,
-  Layers,
-  Send,
+  ShieldCheck,
+  Radio,
+  Lock,
+  Bot,
+  RefreshCw,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface LogEntry {
   id: string;
   timestamp: string;
-  stage: 'Ingestion' | 'Dedupe' | 'AI Inference' | 'Slack Dispatch';
-  status: '200 OK' | 'Filtered' | 'Blocked' | 'Dispatched';
+  stage: 'Stealth Handshake' | 'Consular Probe' | 'Slot Detection' | 'Reservation Hold';
+  status: '200 OK' | 'Bypassed' | 'Holding' | 'Rotating';
   details: string;
   durationMs: number;
 }
@@ -34,51 +32,51 @@ interface LogEntry {
 const INITIAL_LOGS: LogEntry[] = [
   {
     id: 'log_01',
-    timestamp: '16:12:04.218',
-    stage: 'Slack Dispatch',
-    status: 'Dispatched',
-    details: 'Block Kit card posted to #gear-leads-alerts for u/analog_delay_junkie (Score: 10/10)',
-    durationMs: 84,
+    timestamp: '16:14:22.418',
+    stage: 'Reservation Hold',
+    status: 'Holding',
+    details: 'Successfully locked appointment slot at Los Angeles (USA-LAX) for 2026-04-12 10:15 PST. 15-minute checkout lock active.',
+    durationMs: 420,
   },
   {
     id: 'log_02',
-    timestamp: '16:12:04.134',
-    stage: 'AI Inference',
+    timestamp: '16:14:21.998',
+    stage: 'Slot Detection',
     status: '200 OK',
-    details: 'OpenAI gpt-4o-mini classified "actively asking for alternatives" with OpportunityScore 10',
-    durationMs: 142,
+    details: 'Consular probe detected 2 open appointment windows at Los Angeles (National Visa Category D). Dispatching form-fill daemon.',
+    durationMs: 640,
   },
   {
     id: 'log_03',
-    timestamp: '16:12:03.992',
-    stage: 'Dedupe',
-    status: '200 OK',
-    details: 'Hash sha256:7f9a2b8c91 verified unique in 14-day LRU cache',
-    durationMs: 3,
+    timestamp: '16:14:21.358',
+    stage: 'Stealth Handshake',
+    status: 'Bypassed',
+    details: 'Cloudflare Turnstile token solved via headless Playwright in 392ms. TLS JA3 fingerprint matches Chrome 128 MacOS.',
+    durationMs: 392,
   },
   {
     id: 'log_04',
-    timestamp: '16:12:03.989',
-    stage: 'Ingestion',
+    timestamp: '16:14:20.966',
+    stage: 'Consular Probe',
     status: '200 OK',
-    details: 'Polled r/GuitarPedals new.json (HTTP 200). 1 post matched trigger "Reverb • fee increase"',
-    durationMs: 310,
+    details: 'Polled usa.blsspainglobal.com/Global/account/getslots with sticky residential proxy (US-West-LA-04). HTTP 200.',
+    durationMs: 610,
   },
   {
     id: 'log_05',
-    timestamp: '16:10:15.820',
-    stage: 'Dedupe',
-    status: 'Blocked',
-    details: 'Duplicate post detected: sha256:7f9a2b8c91 exists. Halting execution at Node 3.',
-    durationMs: 2,
+    timestamp: '16:14:18.420',
+    stage: 'Consular Probe',
+    status: '200 OK',
+    details: 'Polled Miami Mission (USA-MIA) slot telemetry. 0 open slots returned. Backing off 850ms.',
+    durationMs: 630,
   },
   {
     id: 'log_06',
-    timestamp: '16:05:00.112',
-    stage: 'AI Inference',
-    status: 'Filtered',
-    details: 'Classified post as "neutral / general discussion" with OpportunityScore 3. Below threshold (7). Dropped.',
-    durationMs: 118,
+    timestamp: '16:14:15.112',
+    stage: 'Stealth Handshake',
+    status: 'Rotating',
+    details: 'Rotated residential proxy IP from US-East-NYC-01 to US-West-LA-02 after 100 consecutive requests. Zero Cloudflare bans.',
+    durationMs: 15,
   },
 ];
 
@@ -99,12 +97,12 @@ export function ExecutionLogDrawer({ open, onOpenChange }: ExecutionLogDrawerPro
         <SheetHeader className="border-b border-[var(--color-border)] pb-4 mb-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-800 dark:bg-slate-900 dark:text-slate-200">
-                <Terminal className="h-3.5 w-3.5 text-slate-600 dark:text-slate-400" />
-                Live Execution Traces
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 px-2.5 py-0.5 text-xs font-semibold text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                <Terminal className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                Live Scraper Traces
               </span>
               <span className="text-xs text-emerald-600 font-mono font-bold">
-                ● Connected
+                ● Polling Active
               </span>
             </div>
 
@@ -119,16 +117,16 @@ export function ExecutionLogDrawer({ open, onOpenChange }: ExecutionLogDrawerPro
             </Button>
           </div>
           <SheetTitle className="text-lg font-bold">
-            Real-Time Pipeline Event Log
+            Real-Time Headless Scraper Event Log
           </SheetTitle>
           <SheetDescription className="text-xs text-[var(--color-text-secondary)]">
-            End-to-end execution logs capturing community scraping, hash deduplication, LLM inference latency, and Slack Block Kit dispatches.
+            End-to-end telemetry traces capturing Turnstile bypass, sub-second consular probing, residential IP rotation, and 15-minute appointment hold locks.
           </SheetDescription>
         </SheetHeader>
 
         {/* Filter Pills */}
         <div className="flex items-center gap-1.5 mb-4 text-xs font-mono overflow-x-auto pb-1">
-          {['All', 'Ingestion', 'Dedupe', 'AI Inference', 'Slack Dispatch'].map((stage) => (
+          {['All', 'Stealth Handshake', 'Consular Probe', 'Slot Detection', 'Reservation Hold'].map((stage) => (
             <button
               key={stage}
               onClick={() => setFilter(stage)}
@@ -162,10 +160,10 @@ export function ExecutionLogDrawer({ open, onOpenChange }: ExecutionLogDrawerPro
                     </span>
                     <span
                       className={`px-1.5 py-0.2 rounded text-xs font-semibold ${
-                        log.status === 'Dispatched' || log.status === '200 OK'
+                        log.status === 'Holding' || log.status === '200 OK'
                           ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300'
-                          : log.status === 'Blocked'
-                          ? 'bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300'
+                          : log.status === 'Bypassed'
+                          ? 'bg-teal-100 text-teal-800 dark:bg-teal-950 dark:text-teal-300'
                           : 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
                       }`}
                     >
