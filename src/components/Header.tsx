@@ -6,15 +6,12 @@ import {
   Activity,
   Bot,
   Globe2,
-  Layers,
-  Sparkles,
   Command,
   Sun,
   Moon,
   Zap,
   ShieldCheck,
   Terminal,
-  ExternalLink,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 import { Button } from '@/components/ui/button';
@@ -36,12 +33,19 @@ export function Header({
   onOpenLogsDrawer,
   onOpenCommandMenu,
 }: HeaderProps) {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const currentTheme = resolvedTheme || theme;
+  const isDark = mounted ? currentTheme === 'dark' : false;
+
+  const toggleTheme = () => {
+    setTheme(isDark ? 'light' : 'dark');
+  };
 
   const getNavIcon = (id: string, className: string = 'h-3.5 w-3.5') => {
     switch (id) {
@@ -145,12 +149,15 @@ export function Header({
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              onClick={toggleTheme}
               className="h-8 w-8 p-0 border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-panel-subtle)] shadow-2xs shrink-0 rounded-[4px]"
               aria-label="Toggle theme"
             >
-              <Sun className="h-3.5 w-3.5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-3.5 w-3.5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              {isDark ? (
+                <Sun className="h-3.5 w-3.5 text-amber-500" />
+              ) : (
+                <Moon className="h-3.5 w-3.5 text-slate-700" />
+              )}
             </Button>
           )}
         </div>

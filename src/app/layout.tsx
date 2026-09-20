@@ -27,7 +27,12 @@ export default function RootLayout({
         <link rel="preload" href="/sf-pro-display/SFPRODISPLAYMEDIUM.OTF" as="font" type="font/otf" crossOrigin="anonymous" />
       </head>
       <body className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-text-primary)] antialiased selection:bg-[#533AFD]/20 selection:text-[#533AFD] dark:selection:text-[#7A68FF]">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          storageKey="bls-slotrunner-theme"
+        >
           {children}
         </ThemeProvider>
         {/* Centralized Demo Telemetry Tracker & Upwork Job Attribution */}
