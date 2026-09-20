@@ -30,6 +30,7 @@ export interface TableRow {
 }
 
 export interface SiteConfig {
+  slug: string;
   name: string;
   badge: string;
   tagline: string;
@@ -57,6 +58,7 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
+  slug: 'bls-appointment-bot',
   name: 'BLS SlotRunner',
   badge: 'v2.4 Stealth Headless Core',
   tagline: 'Autonomous Appointment Booking & Anti-Detection Engine for BLS Spain Global',

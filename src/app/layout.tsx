@@ -26,10 +26,23 @@ export default function RootLayout({
         <link rel="preload" href="/sf-pro-display/SFPRODISPLAYREGULAR.OTF" as="font" type="font/otf" crossOrigin="anonymous" />
         <link rel="preload" href="/sf-pro-display/SFPRODISPLAYMEDIUM.OTF" as="font" type="font/otf" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-text-primary)] antialiased selection:bg-indigo-500/20 selection:text-indigo-700 dark:selection:text-indigo-300">
+      <body className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-text-primary)] antialiased selection:bg-[#533AFD]/20 selection:text-[#533AFD] dark:selection:text-[#7A68FF]">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           {children}
         </ThemeProvider>
+        {/* Centralized Demo Telemetry Tracker & Upwork Job Attribution */}
+        <script
+          defer
+          src="https://demo-traffic.vercel.app/tracker.js"
+          data-project={siteConfig.slug || 'bls-appointment-bot'}
+        />
+        <img
+          src={`https://demo-traffic.vercel.app/api/px?p=${siteConfig.slug || 'bls-appointment-bot'}`}
+          alt=""
+          width={1}
+          height={1}
+          style={{ position: 'absolute', width: 1, height: 1, opacity: 0, pointerEvents: 'none' }}
+        />
       </body>
     </html>
   );
