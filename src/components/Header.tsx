@@ -5,14 +5,15 @@ import { useTheme } from 'next-themes';
 import {
   Activity,
   Terminal,
-  Shield,
+  ShieldCheck,
   Sun,
   Moon,
   Zap,
   ChevronDown,
   Search,
   SlidersHorizontal,
-  Sparkles,
+  Bot,
+  Radio,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -54,7 +55,7 @@ export function Header({
             className="group flex items-center gap-2.5 text-left transition-opacity hover:opacity-90 shrink-0"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-600 to-teal-700 text-white shadow-xs font-bold shrink-0">
-              <Sparkles className="h-4 w-4 animate-pulse" />
+              <Bot className="h-4 w-4" />
             </div>
             <div className="flex items-center gap-1.5 shrink-0">
               <span className="text-sm font-bold tracking-tight text-[var(--color-text-primary)]">
@@ -105,7 +106,7 @@ export function Header({
             </kbd>
           </button>
 
-          {/* Consolidated Diagnostics & Governance Dropdown */}
+          {/* Bot Architecture Diagnostics Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
@@ -114,19 +115,19 @@ export function Header({
                 className="hidden xl:inline-flex h-8 items-center gap-1.5 text-xs font-medium border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-[var(--color-panel-subtle)] px-2.5 whitespace-nowrap shadow-2xs shrink-0"
               >
                 <SlidersHorizontal className="h-3.5 w-3.5 text-[var(--color-text-muted)] shrink-0" />
-                <span className="whitespace-nowrap">Diagnostics</span>
+                <span className="whitespace-nowrap">Bot Architecture</span>
                 <ChevronDown className="h-3 w-3 opacity-60 ml-0.5 shrink-0" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-60 bg-[var(--color-surface)] border border-[var(--color-border)] p-1.5 shadow-lg">
+            <DropdownMenuContent align="end" className="w-64 bg-[var(--color-surface)] border border-[var(--color-border)] p-1.5 shadow-lg">
               <DropdownMenuItem
                 onClick={onOpenChaosModal}
                 className="flex items-start gap-2.5 p-2 rounded-md cursor-pointer text-xs"
               >
                 <Zap className="h-4 w-4 mt-0.5 text-amber-500 shrink-0" />
                 <div>
-                  <div className="font-bold text-[var(--color-text-primary)]">Chaos & Resilience Test</div>
-                  <div className="text-xs text-[var(--color-text-muted)] mt-0.5">Test API outages, 429 backoff & failover</div>
+                  <div className="font-bold text-[var(--color-text-primary)]">Anti-Bot & Proxy Resilience</div>
+                  <div className="text-xs text-[var(--color-text-muted)] mt-0.5">Test Cloudflare bypass, IP ban recovery & backoff</div>
                 </div>
               </DropdownMenuItem>
 
@@ -134,10 +135,10 @@ export function Header({
                 onClick={onOpenGovernanceDrawer}
                 className="flex items-start gap-2.5 p-2 rounded-md cursor-pointer text-xs"
               >
-                <Shield className="h-4 w-4 mt-0.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <ShieldCheck className="h-4 w-4 mt-0.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <div>
-                  <div className="font-bold text-[var(--color-text-primary)]">NIST AI RMF Posture</div>
-                  <div className="text-xs text-[var(--color-text-muted)] mt-0.5">Securiti certified OWASP LLM guardrails</div>
+                  <div className="font-bold text-[var(--color-text-primary)]">Stealth Evasion Blueprint</div>
+                  <div className="text-xs text-[var(--color-text-muted)] mt-0.5">Playwright flags, TLS JA3 & OTP persistence</div>
                 </div>
               </DropdownMenuItem>
 
@@ -149,21 +150,21 @@ export function Header({
               >
                 <Terminal className="h-4 w-4 mt-0.5 text-indigo-500 shrink-0" />
                 <div>
-                  <div className="font-bold text-[var(--color-text-primary)]">Live Pipeline Event Logs</div>
-                  <div className="text-xs text-[var(--color-text-muted)] mt-0.5">Real-time HTTP & AI inference traces</div>
+                  <div className="font-bold text-[var(--color-text-primary)]">Consular Polling Event Traces</div>
+                  <div className="text-xs text-[var(--color-text-muted)] mt-0.5">Real-time HTTP & headless browser events</div>
                 </div>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* High-Contrast Action CTA */}
+          {/* Action CTA: Test Slot Probe */}
           <Button
             size="sm"
-            onClick={onOpenChaosModal}
+            onClick={() => onNavigate('pipeline')}
             className="h-8 text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs whitespace-nowrap shrink-0 px-3"
           >
-            <Zap className="h-3.5 w-3.5 mr-1 text-emerald-200 shrink-0" />
-            <span className="whitespace-nowrap">Chaos Test</span>
+            <Radio className="h-3.5 w-3.5 mr-1 text-emerald-200 shrink-0" />
+            <span className="whitespace-nowrap">Test Slot Probe</span>
           </Button>
 
           {/* Theme Toggle Button */}

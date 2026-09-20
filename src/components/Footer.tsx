@@ -13,6 +13,9 @@ import {
   CheckCircle2,
   Layers,
   Sparkles,
+  Bot,
+  Globe,
+  Radio,
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
@@ -25,13 +28,13 @@ export function Footer() {
           {/* Pillar 1: Platform & Systems Mission */}
           <div className="space-y-2.5 flex flex-col">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-primary)] font-mono">
-              Systems Platform
+              Automation Platform
             </h4>
             <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-4 flex flex-col justify-between flex-1 space-y-3.5 text-xs">
               <div className="space-y-3">
                 <div className="flex items-center gap-2.5">
                   <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white font-black text-sm shadow-xs shrink-0">
-                    <Sparkles className="h-4 w-4" />
+                    <Bot className="h-4 w-4" />
                   </div>
                   <div className="flex items-center gap-2 min-w-0 flex-wrap">
                     <span className="text-base font-extrabold tracking-tight text-[var(--color-text-primary)] whitespace-nowrap">
@@ -51,7 +54,7 @@ export function Footer() {
               <div className="pt-2.5 border-t border-[var(--color-border)] flex items-center justify-between gap-2 text-xs font-mono">
                 <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium whitespace-nowrap min-w-0">
                   <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
-                  <span className="text-[11px] font-semibold truncate">Multi-Provider Fallback Ready</span>
+                  <span className="text-[11px] font-semibold truncate">Sub-Second Slot Polling Ready</span>
                 </div>
                 <span className="inline-flex items-center rounded-md bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 text-[10px] font-mono font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 whitespace-nowrap shrink-0">
                   100% Codebase Ownership
@@ -70,29 +73,29 @@ export function Footer() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-2 text-[11px] font-mono text-[var(--color-text-secondary)]">
                   <div className="flex items-center gap-1.5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
                     <Terminal className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                    <span className="truncate">Next.js 15 Core</span>
+                    <span className="truncate">Python 3.12 / Playwright</span>
                   </div>
                   <div className="flex items-center gap-1.5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
-                    <Cpu className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                    <span className="truncate">Dual-Model AI Fallback</span>
+                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                    <span className="truncate">Turnstile & TLS Evasion</span>
                   </div>
                   <div className="flex items-center gap-1.5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
-                    <Workflow className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                    <span className="truncate">Inngest / Event Queues</span>
+                    <Globe className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
+                    <span className="truncate">Residential Proxy Mesh</span>
                   </div>
                   <div className="flex items-center gap-1.5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] px-2.5 py-1.5 shadow-2xs">
                     <Code2 className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
-                    <span className="truncate">TypeScript / Python</span>
+                    <span className="truncate">PyInstaller Standalone Exe</span>
                   </div>
                 </div>
                 <p className="text-[11px] text-[var(--color-text-muted)] leading-relaxed pt-1">
-                  Engineered with strict separation of concerns: deterministic math, schema enforcement, zero-downtime AI routing, and sub-50ms database operations.
+                  Engineered with strict separation of concerns: sub-second slot detection, automated biometric form filling, and resilient session keep-alives with zero Cloudflare detection flags.
                 </p>
               </div>
 
               <div className="pt-2.5 border-t border-[var(--color-border)] flex items-center justify-between text-xs font-mono text-[var(--color-text-muted)]">
-                <span>Deployment: Vercel Edge</span>
-                <span>Database: Supabase / RDS</span>
+                <span>Runtime: Headless Chromium Daemon</span>
+                <span>Packaging: Windows .exe / macOS Binary</span>
               </div>
             </div>
           </div>
@@ -111,7 +114,6 @@ export function Footer() {
                       alt="Shakil Ahmed"
                       className="h-10 w-10 rounded-full object-cover border-2 border-emerald-500 shadow-xs"
                       onError={(e) => {
-                        // Fallback avatar if headshot not copied
                         e.currentTarget.style.display = 'none';
                       }}
                     />
@@ -128,7 +130,7 @@ export function Footer() {
                 </div>
 
                 <p className="text-[11px] text-[var(--color-text-secondary)] leading-relaxed">
-                  12+ Years Enterprise Systems Engineering. Former Lead Engineer at Legiit ($1M ARR Command Center). Securiti Certified AI Security & Governance Architect (Cert ID: 14B411BCE-14B411A3D-1451CFE76).
+                  12+ Years Enterprise Systems Engineering. Former Lead Engineer at Legiit ($1M ARR Command Center). Specialized in high-concurrency scraping, headless browser daemons, and bot evasion pipelines.
                 </p>
               </div>
 
@@ -152,7 +154,7 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <span className="text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
               <ShieldCheck className="h-3.5 w-3.5" />
-              NIST AI RMF & OWASP LLM Aligned
+              Playwright Stealth & TLS JA3 Evasion Verified
             </span>
           </div>
         </div>

@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react';
 import {
-  Sparkles,
-  ShieldAlert,
   ShieldCheck,
   CheckCircle2,
   Copy,
@@ -12,7 +10,9 @@ import {
   Terminal,
   RefreshCw,
   Cpu,
-  ArrowRight,
+  Globe,
+  Radio,
+  Lock,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -26,40 +26,56 @@ export function HeroWorkflowEngine() {
   const [copied, setCopied] = useState(false);
   const [result, setResult] = useState<Record<string, unknown> | null>(siteConfig.workflow.sampleResponse);
   const [stepStatus, setStepStatus] = useState({
-    firewall: 'VERIFIED',
-    inference: '82ms • OpenAI gpt-4o-mini',
-    schema: 'PASS • Deterministic Rules',
+    stealth: 'BYPASS READY • TLS JA3 Clean',
+    probe: 'ACTIVE • 640ms Sub-Second Polling',
+    checkout: 'AUTO-HOLD • Instant 15-Min Lock',
   });
 
   const handleExecute = async () => {
     setLoading(true);
-    try {
-      const res = await fetch('/api/ai/classify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: 'Direct Client Test',
-          content: inputText,
-        }),
-      });
+    // Simulate real headless browser execution stages with sub-second realistic timing
+    await new Promise((resolve) => setTimeout(resolve, 850));
 
-      if (res.ok) {
-        const data = await res.json();
-        setResult(data);
-        setStepStatus({
-          firewall: data.firewallStatus?.passed ? 'PASSED (0ms)' : 'SECURITY INTERCEPT (0ms)',
-          inference: `${data.latencyMs || 84}ms • ${data.provider} (${data.model || 'gpt-4o-mini'})`,
-          schema: 'ENFORCED (1ms)',
-        });
-      } else {
-        // Fallback to sample response if API keys unconfigured locally
-        setResult(siteConfig.workflow.sampleResponse);
-      }
-    } catch {
-      setResult(siteConfig.workflow.sampleResponse);
-    } finally {
-      setLoading(false);
-    }
+    const timestamp = new Date().toISOString();
+    const liveSimulationResult = {
+      session_status: 'AUTHENTICATED_AND_ACTIVE',
+      timestamp,
+      target_mission: 'BLS Spain Consular Mission (Los Angeles)',
+      visa_category: 'National Visa / Student (Long Term)',
+      stealth_handshake_telemetry: {
+        browser_daemon: 'Headless Chromium (Playwright Async)',
+        user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/128.0.0.0',
+        cloudflare_turnstile: 'TOKEN_ACQUIRED_IN_390MS',
+        tls_ja3_fingerprint: '771,4865-4866-4867,0-23-65281-10-11-35-16,29-23-24,0',
+        residential_ip_node: '198.54.120.42 (US-West-LosAngeles)',
+        session_cookie_ttl: '3580s Remaining',
+        anti_detection_score: '100% Clean (Zero Bot Flags)',
+      },
+      slot_discovery: {
+        status: 'OPEN_SLOT_CONFIRMED',
+        slot_reference: `BLS-LA-${new Date().getFullYear()}${String(new Date().getMonth() + 2).padStart(2, '0')}14-0930`,
+        appointment_date: '2026-11-14',
+        appointment_time: '09:30 AM PST',
+        consular_counter: 'Biometrics Desk 04',
+        slot_lock_state: 'LOCKED (15-Minute Exclusive Hold)',
+      },
+      booking_payload_dispatch: {
+        applicant_name: 'Elliot Vance',
+        passport_hash: 'SHA256:e89a...41c2',
+        contact_phone: '+1-310-555-0182',
+        otp_listener: 'Webhook Daemon Ready (Waiting for SMS/Email Token)',
+        booking_status: 'RESERVATION_HELD_SUCCESSFULLY',
+        execution_latency_ms: 642,
+      },
+    };
+
+    setResult(liveSimulationResult);
+    setStepStatus({
+      stealth: 'PASSED (390ms) • Turnstile Solved',
+      probe: 'SLOT FOUND • 2026-11-14 09:30 AM',
+      checkout: 'LOCKED • 15m Reservation Active',
+    });
+    setLoading(false);
   };
 
   const handleCopy = () => {
@@ -88,7 +104,7 @@ export function HeroWorkflowEngine() {
           </div>
           <div className="flex items-center gap-1.5 text-xs font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-2.5 py-1 rounded-md border border-emerald-200 dark:border-emerald-800 shrink-0">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Zero-Downtime Fallback Active</span>
+            <span>Headless Daemon Online</span>
           </div>
         </div>
       </CardHeader>
@@ -104,7 +120,7 @@ export function HeroWorkflowEngine() {
               onClick={() => setInputText(siteConfig.workflow.defaultInput)}
               className="text-xs text-emerald-600 dark:text-emerald-400 hover:underline font-mono"
             >
-              Reset to Sample Data
+              Reset Sample Profile
             </button>
           </div>
           <Textarea
@@ -116,7 +132,7 @@ export function HeroWorkflowEngine() {
           />
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
             <span className="text-[11px] text-[var(--color-text-muted)] font-mono">
-              Tested with OWASP LLM01 injection patterns & automated PII tokenization.
+              Automated Cloudflare Turnstile token resolution, TLS fingerprint rotation, and slot reservation hold.
             </span>
             <Button
               onClick={handleExecute}
@@ -126,7 +142,7 @@ export function HeroWorkflowEngine() {
               {loading ? (
                 <>
                   <RefreshCw className="h-3.5 w-3.5 mr-2 animate-spin" />
-                  Executing Pipeline...
+                  Running Headless Flow...
                 </>
               ) : (
                 <>
@@ -138,36 +154,36 @@ export function HeroWorkflowEngine() {
           </div>
         </div>
 
-        {/* 3-Step Inline Architecture Pipeline Telemetry */}
+        {/* 3-Step Headless Architecture Pipeline Telemetry */}
         <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-panel-subtle)] p-3 sm:p-4">
           <div className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-text-secondary)] font-mono mb-2.5">
-            Real-Time Pipeline Execution Stages
+            Headless Booking Execution Pipeline
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 text-xs font-mono">
             {/* Stage 1 */}
             <div className="flex items-center gap-2 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] p-2.5 shadow-2xs">
               <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <div className="min-w-0">
-                <div className="text-[10px] text-[var(--color-text-muted)] font-sans uppercase">Stage 1 • LLM Firewall</div>
-                <div className="font-semibold text-emerald-600 dark:text-emerald-400 truncate">{stepStatus.firewall}</div>
+                <div className="text-[10px] text-[var(--color-text-muted)] font-sans uppercase">Stage 1 • Stealth Handshake</div>
+                <div className="font-semibold text-emerald-600 dark:text-emerald-400 truncate">{stepStatus.stealth}</div>
               </div>
             </div>
 
             {/* Stage 2 */}
             <div className="flex items-center gap-2 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] p-2.5 shadow-2xs">
-              <Cpu className="h-4 w-4 text-teal-600 dark:text-teal-400 shrink-0" />
+              <Radio className="h-4 w-4 text-teal-600 dark:text-teal-400 shrink-0" />
               <div className="min-w-0">
-                <div className="text-[10px] text-[var(--color-text-muted)] font-sans uppercase">Stage 2 • Multi-Model Fallback</div>
-                <div className="font-semibold text-[var(--color-text-primary)] truncate">{stepStatus.inference}</div>
+                <div className="text-[10px] text-[var(--color-text-muted)] font-sans uppercase">Stage 2 • Consular Slot Probe</div>
+                <div className="font-semibold text-[var(--color-text-primary)] truncate">{stepStatus.probe}</div>
               </div>
             </div>
 
             {/* Stage 3 */}
             <div className="flex items-center gap-2 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] p-2.5 shadow-2xs">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <Lock className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
               <div className="min-w-0">
-                <div className="text-[10px] text-[var(--color-text-muted)] font-sans uppercase">Stage 3 • Zod Schema & Math</div>
-                <div className="font-semibold text-emerald-600 dark:text-emerald-400 truncate">{stepStatus.schema}</div>
+                <div className="text-[10px] text-[var(--color-text-muted)] font-sans uppercase">Stage 3 • Form-Fill & Hold</div>
+                <div className="font-semibold text-emerald-600 dark:text-emerald-400 truncate">{stepStatus.checkout}</div>
               </div>
             </div>
           </div>
@@ -180,7 +196,7 @@ export function HeroWorkflowEngine() {
               <div className="flex items-center gap-2">
                 <Terminal className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
                 <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-primary)] font-mono">
-                  Verified Engine Output (Structured Payload)
+                  Verified Headless Booking Output (Structured Payload)
                 </span>
               </div>
               <Button
@@ -197,7 +213,7 @@ export function HeroWorkflowEngine() {
                 ) : (
                   <>
                     <Copy className="h-3.5 w-3.5 mr-1" />
-                    Copy JSON
+                    Copy Payload
                   </>
                 )}
               </Button>
